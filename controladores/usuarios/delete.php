@@ -4,7 +4,7 @@ include ("../../Conexion/conexion.php");
 
 $id_usuario = $_POST['id_usuario'];
 
-$sentencia = $pdo->prepare("DELETE FROM usuario WHERE  id_usuario = :id_usuario");
+$sentencia = $pdo->prepare("DELETE FROM usuario WHERE id_usuario = :id_usuario");
 
 
  $sentencia->bindParam(':id_usuario', $id_usuario);

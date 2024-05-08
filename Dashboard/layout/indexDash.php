@@ -222,13 +222,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active" style="background-color: #cd7522 ;">
+                <a href="../proveedor/index.php" class="nav-link active" style="background-color: #cd7522 ;">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Proveedores registradas</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link active" style="background-color: #cd7522 ;">
+                <a href="../proveedor/create.php" class="nav-link active" style="background-color: #cd7522 ;">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Agregar proveedor</p>
                 </a>
