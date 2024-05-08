@@ -1,6 +1,6 @@
 <?php include("../layout/indexDash.php");
 include ("../../Conexion/conexion.php");
-include("../../controladores/usuarios/listar_usuarios.php");
+include("../../controladores/proveedor/listaProveedor.php");
 ?>
 
 
@@ -11,7 +11,7 @@ include("../../controladores/usuarios/listar_usuarios.php");
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Lista de usuarios</h1>
+            <h1 class="m-0">Lista de proveedores</h1>
           </div><!-- /.col -->
           
       </div><!-- /.container-fluid -->
@@ -24,7 +24,7 @@ include("../../controladores/usuarios/listar_usuarios.php");
       <div class="container-fluid">
       <div class="card card-success">
               <div class="card-header" style="background-color: #cd7522;">
-                <h3 class="card-title">Usuarios</h3>
+                <h3 class="card-title">Proveedores</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
@@ -38,38 +38,27 @@ include("../../controladores/usuarios/listar_usuarios.php");
                   <thead>
                   <tr>
                         <th>Nro</th>
-                        <th>Documento</th>
-                        <th>Tipo</th>
-                        <th>Nombres</th>
-                        <th>Apellidos</th>
-                        <th>Correo</th>
-                        <th>Direccion</th>
+                        <th>Nombre</th>
                         <th>Telefono</th>
-                        <th>Rol</th>
-                        <th>Acciones</th>
+                        <th>Direccion</th>
+                        <th>Accion</th>
                     </tr>
                   </thead>
                   <tbody>
                         <?php 
                         
-                        foreach ($usuarios as $usuarios){
-                          $id_usuario = $usuarios['id_usuario'];
+                        foreach ($proveedor_datos as $proveedor_dato){
+                          $n_proveedor = $proveedor_dato['n_proveedor'];
                             ?>
                             <tr>
-                                <td><?php echo $usuarios['id_usuario'] ?></td>
-                                <td><?php echo $usuarios['n_documento'] ?></td>
-                                <td><?php echo $usuarios['tipo_documento'] ?></td>
-                                <td><?php echo $usuarios['nombres'] ?></td>
-                                <td><?php echo $usuarios['apellidos'] ?></td>
-                                <td><?php echo $usuarios['correo'] ?></td>
-                                <td><?php echo $usuarios['direccion'] ?></td>
-                                <td><?php echo $usuarios['telefono'] ?></td>
-                                <td><center><?php echo $usuarios['rol'] ?></center></td>
+                                <td><?php echo $proveedor_dato['n_proveedor'] ?></td>
+                                <td><?php echo $proveedor_dato['nombre_proveedor'] ?></td>
+                                <td><?php echo $proveedor_dato['telefono'] ?></td>
+                                <td><?php echo $proveedor_dato['direccion'] ?></td>
                                 <td>
                                     <div class="btn-group">
-                                        <a href="showUser.php?id=<?php echo $id_usuario; ?>" type="button" class="btn btn-info"><i class="fa fa-eye"></i>Ver</a>
-                                        <a href="updateUser.php?id=<?php echo $id_usuario; ?>" type="button" class="btn btn-success"><i class="fa fa-pencil-alt"></i>Editar</a>
-                                        <a href="deleteUser.php?id=<?php echo $id_usuario; ?>" type="button" class="btn btn-danger"><i class="fa fa-trash"></i>Eliminar</a>
+                                        <a href="update.php?id=<?php echo $n_proveedor; ?>" type="button" class="btn btn-success"><i class="fa fa-pencil-alt"></i>Editar</a>
+                                        <a href="delete.php?id=<?php echo $n_proveedor; ?>" type="button" class="btn btn-danger"><i class="fa fa-trash"></i>Eliminar</a>
                                     </div>
                                 </td>
                             </tr>
