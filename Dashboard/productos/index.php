@@ -64,7 +64,7 @@ include("../../controladores/productos/listaProductos.php");
                                 <td><?php echo $producto_dato['unidad_medida'] ?></td>
                                 <td><?php echo "<img src='data:image/jpg;base64," . base64_encode($producto_dato['imagen']) . "' alt='80' width='80'>"?></td>
                                 <td><?php echo $producto_dato['cantidad'] ?></td>
-                                <td></td>
+                                <td><?php echo $producto_dato['nombre_proveedor'] ?></td>
                                 <td>
                                     <div class="btn-group">
                                         <a href="update.php?id=<?php echo $n_producto; ?>" type="button" class="btn btn-success"><i class="fa fa-pencil-alt"></i>Editar</a>
