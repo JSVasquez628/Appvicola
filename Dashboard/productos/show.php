@@ -9,7 +9,7 @@ include ("../../controladores/productos/show.php") ?>
       <div class="container-fluid">
         <div class="row mb-4">
           <div class="col-sm-12">
-            <h1 class="m-0">Informacion cliente</h1>
+            <h1 class="m-0">Informacion producto</h1>
           </div><!-- /.col -->
           
       </div><!-- /.container-fluid -->
@@ -22,7 +22,7 @@ include ("../../controladores/productos/show.php") ?>
       <div class="container-fluid">
       <div class="card card-success">
               <div class="card-header" style="background-color: #cd7522;">
-                <h3 class="card-title">Usuarios</h3>
+                <h3 class="card-title">Productos</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
@@ -35,43 +35,41 @@ include ("../../controladores/productos/show.php") ?>
                     <div class="row">
                         <div class="col col-md-6">
                             <div class="form-group">
-                                <label for="">Documento</label>
-                                <input type="text" name="documento" class="form-control" value="<?php echo $documento?>" disabled>
+                                <label for="">Nombre</label>
+                                <input type="text" name="nombre_producto" class="form-control" value="<?php echo $nombre_producto?>" disabled>
                             </div>
                             <div class="form-group">
-                                <label for="">Tipo documento</label>
-                                <input type="text" name="tipo documento" class="form-control" value="<?php echo $tipo_documento?>" disabled>
+                                <label for="">Precio de venta</label>
+                                <input type="text" name="precio_venta" class="form-control" value="<?php echo $precio_venta?>" disabled>
                             </div>
                             <div class="form-group">
-                                <label for="">Nombres</label>
-                                <input type="text" name="nombres" class="form-control" value="<?php echo $nombres?>" disabled>
+                                <label for="">Precio de compra</label>
+                                <input type="text" name="precio_compra" class="form-control" value="<?php echo $precio_compra?>" disabled>
                             </div>
                             <div class="form-group">
-                                <label for="">Apellidos</label>
-                                <input type="text" name="apellidos" class="form-control" value="<?php echo $apellido?>" disabled>
+                                <label for="">Unidad de medida</label>
+                                <input type="text" name="unidad_medida" class="form-control" value="<?php echo $unidad_medida?>" disabled>
                             </div>
                         </div>
                         <div class="col col-md-6">
                             <div class="form-group">
-                                <label for="">Correo</label>
-                                <input type="correo" name="correo" class="form-control" value="<?php echo $correo?>" disabled>
+                                <label for="">Imagen</label>
+                                <div>
+                                <?php echo "<img src='data:image/jpg;base64," . base64_encode($producto_dato['imagen']) . "' alt='200' width='190'>"?>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="">Direccion</label>
-                                <input type="text" name="direccion" class="form-control" value="<?php echo $direccion?>" disabled>
+                                <label for="">Cantidad</label>
+                                <input type="text" name="cantidad" class="form-control" value="<?php echo $cantidad?>" disabled>
                             </div>
                             <div class="form-group">
-                                <label for="">Telefono</label>
-                                <input type="text" name="telefono" class="form-control" value="<?php echo $telefono?>" disabled>
-                            </div>
-                            <div class="form-group">
-                                <label for="">Rol</label>
-                                <input type="text" name="rol" class="form-control" value="<?php echo $rol?>" disabled>
+                                <label for="">Proveedor</label>
+                                <input type="text" name="nombre_proveedor" class="form-control" value="<?php echo $proveedor?>" disabled>
                             </div>
                         </div>
                         
                         <div class="form-group">
-                                <a href="../usuarios/Rcliente.php" class="btn btn-secondary">Volver</a>
+                                <a href="../productos/index.php" class="btn btn-secondary">Volver</a>
                             </div>
                     </div>
                     <!-- /.row -->

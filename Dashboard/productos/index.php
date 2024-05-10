@@ -67,6 +67,7 @@ include("../../controladores/productos/listaProductos.php");
                                 <td><?php echo $producto_dato['nombre_proveedor'] ?></td>
                                 <td>
                                     <div class="btn-group">
+                                        <a href="show.php?id=<?php echo $n_producto; ?>" type="button" class="btn btn-info"><i class="fa fa-eye"></i>Ver</a>
                                         <a href="update.php?id=<?php echo $n_producto; ?>" type="button" class="btn btn-success"><i class="fa fa-pencil-alt"></i>Editar</a>
                                         <a href="delete.php?id=<?php echo $n_producto; ?>" type="button" class="btn btn-danger"><i class="fa fa-trash"></i>Eliminar</a>
                                     </div>
