@@ -66,7 +66,7 @@ include("../../controladores/proveedor/listaProveedor.php");
                             <div class="col col-md-6">
                             <div class="form-group">
                                 <label for="">Imagen</label>
-                                <input type="file" name="imagen" class="form-control" placeholder="Sube una imagen del producto..." required>
+                                <input type="file" name="imagen" class="form-control" placeholder="Sube una imagen del producto..." accept="image/jpeg" required>
                             </div>
                             <div class="form-group">
                                 <label for="">Cantidad</label>

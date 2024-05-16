@@ -52,10 +52,18 @@ include ("../../controladores/productos/show.php") ?>
                             </div>
                         </div>
                         <div class="col col-md-6">
-                            <div class="form-group">
+                        <div class="form-group">
                                 <label for="">Imagen</label>
                                 <div>
-                                <?php echo "<img src='data:image/jpg;base64," . base64_encode($producto_dato['imagen']) . "' alt='200' width='190'>"?>
+                                <?php echo "<img src='data:image/jpg;base64," . base64_encode($producto_dato['imagen']) . "'  style='
+                                
+                                width: 150px;
+                                height: 120px;
+                                float: rigth;
+                                padding: 0;
+                                border-radius: 50%;
+                                margin: 2px auto 0 auto;
+                                display: block;'>"?>
                                 </div>
                             </div>
                             <div class="form-group">

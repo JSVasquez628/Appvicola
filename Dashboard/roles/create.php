@@ -25,7 +25,7 @@ include("../layout/indexDash.php");
     <div class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-5">
+                <div class="col-md-8 mx-auto">
                     <div class="card card-primary">
                         <div class="card-header" style="background-color: #cd7522;">
                             <h3 class="card-title">llena los datos con cuidado</h3>
