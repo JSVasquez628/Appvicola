@@ -78,7 +78,7 @@ include ("../../controladores/roles/listaRoles.php"); ?>
                                   <option value="<?php echo $id_rol;?>"<?php if($rol_tabla == $rol){ ?> selected="selected" <?php } ?> ><?php echo $rol_tabla;?></option> 
                                   <?php
                                   }
-                                  ?>
+                                  ?>  
                                 </select>
                             </div>
                         </div>

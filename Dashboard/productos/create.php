@@ -65,9 +65,18 @@ include("../../controladores/proveedor/listaProveedor.php");
                             </div>
                             <div class="col col-md-6">
                             <div class="form-group">
-                                <label for="">Imagen</label>
-                                <input type="file" name="imagen" class="form-control" placeholder="Sube una imagen del producto..." accept="image/jpeg" required>
+                                    <label for="imageUpload">Imagen</label>
+                                    <input type="file" name="imagen" id="imageUpload" accept="image/*" class="form-control" placeholder="Sube una imagen del producto..." required>
+                                    <img id="imageDisplay" src="#" alt="Imagen Subida" style="display: none;
+                                    width: 100px;
+                                    height: 85px;   
+                                    float: rigth;
+                                    padding: 0;
+                                    border-radius: 50%;
+                                    margin: 2px auto 0 auto;" 
+                                    />
                             </div>
+
                             <div class="form-group">
                                 <label for="">Cantidad</label>
                                 <input type="number" name="cantidad" class="form-control" placeholder="Coloca la cantidad del producto..." required>
@@ -103,7 +112,21 @@ include("../../controladores/proveedor/listaProveedor.php");
         </div>
     </div>
 </div>
+<script>
+    document.getElementById('imageUpload').addEventListener('change', function(event) {
+    const imageDisplay = document.getElementById('imageDisplay');
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            imageDisplay.src = e.target.result;
+            imageDisplay.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+    }
+});
 
+</script>
 <?php 
  include("../layout/footerDash.php"); 
  include("../layout/mensajes.php");
