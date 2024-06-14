@@ -191,29 +191,6 @@
           </li>
           <li class="nav-item " >
             <a href="#" class="nav-link active" style="background-color: #cd7522 ;">
-              <i class="bi bi-cash-coin nav-icon"></i>
-              <p >
-                Compras
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link active" style="background-color: #cd7522 ;">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Compras registradas</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link active" style="background-color: #cd7522 ;">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Registras compra</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item " >
-            <a href="#" class="nav-link active" style="background-color: #cd7522 ;">
             <i class="bi bi-truck nav-icon"></i>
               <p >
                 Proveedores

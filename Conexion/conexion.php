@@ -3,7 +3,7 @@
 define('SERVIDOR','localhost');
 define('USUARIO','root');
 define('PASSWORD','');
-define('BD','appvicola6');
+define('BD','appvicola');
 
 $servidor = "mysql:dbname=".BD.";host=".SERVIDOR;
 
@@ -13,3 +13,6 @@ try {
 } catch (Exception $e) {
     echo "no conexion";
 }
+
+date_default_timezone_set("America/Bogota");
+$fechaHora = date('Y-m-d h:i:s');

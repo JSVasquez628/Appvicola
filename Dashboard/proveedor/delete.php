@@ -79,5 +79,6 @@ include ("../../controladores/proveedor/show.php") ?>
 
   <?php 
  include("../layout/footerDash.php"); 
+ include("../layout/mensajes.php")
  
 ?>

@@ -18,7 +18,7 @@ $ruta_temporal = $_FILES['imagen']['tmp_name'];
 $imagen_blob = file_get_contents($ruta_temporal);
 
 // Insertar en la base de datos
-$sentencia = $pdo->prepare("INSERT INTO producto (nombre_producto, precio_venta, precio_compra, unidad_medida, imagen, cantidad, n_proveedor) VALUES (:nombre_producto, :precio_venta, :precio_compra, :unidad_medida, :imagen, :cantidad, :n_proveedor)");
+$sentencia = $pdo->prepare("INSERT INTO producto (nombre_producto, precio_venta, precio_compra, unidad_medida, imagen, cantidad, n_proveedor, fyh_creacion) VALUES (:nombre_producto, :precio_venta, :precio_compra, :unidad_medida, :imagen, :cantidad, :n_proveedor, :fyh_creacion)");
 $sentencia->bindParam(":nombre_producto", $nombre_producto);
 $sentencia->bindParam(":precio_venta", $precio_venta);
 $sentencia->bindParam(":precio_compra", $precio_compra);
@@ -26,6 +26,7 @@ $sentencia->bindParam(":unidad_medida", $unidad_medida);
 $sentencia->bindParam(":imagen", $imagen_blob, PDO::PARAM_LOB); // Se pasa el contenido del archivo como un blob
 $sentencia->bindParam(":cantidad", $cantidad);
 $sentencia->bindParam(":n_proveedor", $n_proveedor);
+$sentencia->bindParam(":fyh_creacion", $fechaHora);
 $sentencia->execute();
 
 $respuesta = array(

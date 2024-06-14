@@ -127,7 +127,9 @@ include("../../controladores/proveedor/listaProveedor.php");
 });
 
 </script>
-<?php 
- include("../layout/footerDash.php"); 
- include("../layout/mensajes.php");
+<?php
+    
+    include("../layout/footerDash.php"); 
+    include("../layout/mensajes.php"); 
+
 ?>
