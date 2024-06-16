@@ -151,15 +151,9 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active" style="background-color: #cd7522 ;">
+                <a href="../inventario/index.php" class="nav-link active" style="background-color: #cd7522 ;">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Agregar cantidad</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link active" style="background-color: #cd7522 ;" >
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Modificar canttidad</p>
+                  <p>Manejo de inventario</p>
                 </a>
               </li>
             </ul>
@@ -177,14 +171,6 @@
                 <a href="#" class="nav-link active" style="background-color: #cd7522 ;">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ventas registradas</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link active" style="background-color: #cd7522 ;">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Reporte de ventas</p>
                 </a>
               </li>
             </ul>

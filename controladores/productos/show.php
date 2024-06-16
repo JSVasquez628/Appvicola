@@ -12,7 +12,7 @@ $query_producto->execute();
 $producto = $query_producto->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ($producto as $producto_dato) {
-    $n_proveedor = $producto_dato['n_producto'];
+    $n_producto = $producto_dato['n_producto'];
     $nombre_producto = $producto_dato['nombre_producto'];
     $precio_venta = $producto_dato['precio_venta'];
     $precio_compra = $producto_dato['precio_compra'];
