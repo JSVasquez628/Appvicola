@@ -47,7 +47,7 @@ include ("../../controladores/productos/show.php");
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="">Cantidad nueva</label>
-                                                    <input type="number" name="cantidad_new" id="cantidad_new" placeholder="Agregue la cantidad" class="form-control" value="" required>
+                                                    <input type="number" name="cantidad_new" id="cantidad_new" placeholder="Nueva cantidad" class="form-control" value="" required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
