@@ -12,7 +12,7 @@ require '../../PHPMailer/Exception.php';
 require '../../PHPMailer/PHPMailer.php';
 require '../../PHPMailer/SMTP.php';
 
-require_once('conexion.php');
+require_once('../conexion.php');
 $email = $_POST['correo'];
 $query = "SELECT * FROM usuario where correo = '$email'";
 $result = $conn->query($query);
@@ -41,15 +41,15 @@ try {
 
 
     $mail->send();
-    header("Location: ../vistas/ingreso.php?message=ok");
+    header("Location: ../ingreso.php?message=ok");
 } catch (Exception $e) {
   //echo 'Error al enviar el correo: ', $e->getMessage();
   //echo ' Código de error: ', $mail->ErrorInfo;
-  header("Location: ../vistas/ingreso.php?message=error");
+  header("Location: ../ingreso.php?message=error");
 }
 
 }else{
-  header("Location: ../vistas/ingreso.php?message=not_found");
+  header("Location: ../ingreso.php?message=not_found");
 }
 
 ?>

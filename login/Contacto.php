@@ -1,32 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contactenos/Appvicola</title>
-    <link rel="stylesheet" href="css/estilocontacto.css">
-    <link rel="shortcut icon" href="css/Imagenes/icono.png" type="image/x-icon">
-    <script src="https://kit.fontawesome.com/fbf50badbe.js" crossorigin="anonymous"></script>
+<?php
+include 'head.php';
 
-</head>
-
+?>
 <body>
-    <header>
-        <div class="menu">
-            <a href="index.html"> <img  src="css/Imagenes/icono.png" alt=""> </a>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="quienessomos.html">Quienes Somos</a></li>
-                    <li><a href="Ubicacion.html">Ubicacion</a></li>
-                    <li><a href="registro.html">Registro</a></li>
-                    <li><a href="ingreso.html">Ingreso</a></li>
-
-                </ul>
-            </nav>
-        </div>
-    </header>
-
+  <?php
+  include 'header.php';
+  ?>
     <div class="contenedor">
         <h1>Formulario de contaco</h1>
         <div class="contenido">
@@ -60,10 +39,14 @@
                 <input type="text" name="correo" placeholder="Correo Electronico" id="correo" required>
                 <input type="text" name="asunto" placeholder="Asunto" id="asunto" required>
                 <textarea name="mensaje" id="mensaje" placeholder="Mensaje" required></textarea>
-                <button type="submit" formaction="index.html"><b>Enviar</b></button>
+                <button type="submit" formaction="../index.html"><b>Enviar</b></button>
             </form>
 
         </div>
     </div>
+    <?php
+    include 'footer.php';
+
+    ?>
 </body>
 </html>

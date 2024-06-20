@@ -1,6 +1,7 @@
 <?php
 include '../Conexion/conexion.php';
-include 'consulta.php';
+include '../Catalogo/consulta.php';
+include '../sesion/iniciar_sesion.php';
 ?>
 
 <!DOCTYPE html>
@@ -17,8 +18,8 @@ include 'consulta.php';
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <!-- Estilos locales -->
-    <link rel="stylesheet" href="css/estilocata.css">
-    <link rel="shortcut icon" href="css/Imagenes/icono.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/estilocata.css">
+    <link rel="shortcut icon" href="../css/Imagenes/icono.png" type="image/x-icon">
     <script src="https://kit.fontawesome.com/fbf50badbe.js" crossorigin="anonymous"></script>
 
 <!-- Estilos de la pagina -->    
@@ -48,15 +49,15 @@ include 'consulta.php';
 <!--Menu del encabezado-->
     <header style="position: fixed; top: 0; width: 100%; z-index: 100;">
         <div class="menu">
-           <a href="index.html"><img src="css/Imagenes/icono.png" alt=""></a>
+           <a href="index.html"><img src="../css/Imagenes/icono.png" alt=""></a>
             <nav>
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="Contacto.html">Contacto</a></li>
                     <li><a href="quienessomos.html">Quienes Somos</a></li>
                     <li><a href="Ubicacion.html">Ubicacion</a></li>
-                    <li><a href="compra.php" class="comp-icon"><i class="fas fa-shopping-cart"></i></a></li>
-                    <li><a href="index.html" class="comp-icon"><i class="fa-solid fa-arrow-right-from-bracket" style="color: #f00a0a;"></i></a></li>
+                    <li><a href="Carrito.php" class="comp-icon"><i class="fas fa-shopping-cart"></i></a></li>
+                    <li><a href="../sesion/cerrar_sesion.php" class="comp-icon"><i class="fa-solid fa-arrow-right-from-bracket" style="color: #f00a0a;"></i></a></li>
                 </ul>
             </nav>
         </div>
@@ -181,6 +182,33 @@ include 'consulta.php';
                             <span class="small">Por favor, cualquier duda o sugerencia, puede contactarnos al número relacionado. Horario de atención lunes a viernes de 6:00 AM a 5:00 PM</span>
                         </div>
                     </div>
+                    <br>
+
+<!--Consulta para traer el producto destacado-->
+                                        <?php
+                    // Conexión a la base de datos
+                    try {
+                        $pdo = new PDO('mysql:host=localhost;dbname=appvicola6', 'root', '');
+                        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    } catch (PDOException $e) {
+                        die("Error en la conexión: " . $e->getMessage());
+                    }
+
+                    // Conexión a la base de datos y ejecución de la consulta
+                    $Sql ="SELECT producto.nombre_producto AS producto_mas_vendido, SUM(detalleventa.cantidad) AS total_vendido, producto.imagen, producto.precio_venta, producto.unidad_medida 
+                        FROM detalleventa 
+                        JOIN producto ON detalleventa.n_producto = producto.n_producto 
+                        GROUP BY detalleventa.n_producto 
+                        ORDER BY total_vendido DESC 
+                        LIMIT 1;";
+                    $query_Producto = $pdo->prepare($Sql);
+                    $query_Producto->execute();
+                    $producto = $query_Producto->fetch(PDO::FETCH_ASSOC); // Cambiado a fetch para obtener un solo registro
+
+                    // Verificar si se obtuvieron resultados
+                    if ($producto) {
+                    ?>
+
                     <div class="ibox">
                         <div class="ibox-content">
                             <hr>
@@ -191,19 +219,43 @@ include 'consulta.php';
                                 <p style="text-align: center;"><strong>PRODUCTO DESTACADO</strong> </p>
                                 <div class="small m-t-xs">
                                 <div>
-                                <?php echo "<img src='data:image/jpg;base64," . base64_encode($producto['imagen']) . "' alt='" . $producto['nombre_producto'] . "'>";?>
-                                </div>
-                                <br>
-                                <div style="text-align: center;">
-                                    <?php echo "Producto destacado #1 de la semana <strong>" . $producto['nombre_producto'] . "a " . number_format ($producto['precio_venta']) . " por " . $producto['unidad_medida']; "</strong>"; ?>
+                                <div>
+
+<!--Producto destacado-->
+                        <?php 
+                        echo "<img src='data:image/jpg;base64," . base64_encode($producto['imagen']) . "' alt='" . htmlspecialchars($producto['producto_mas_vendido'], ENT_QUOTES) . "'>";
+                        ?>
+                    </div>
+                    <br>
+                    <div style="text-align: center;">
+                        <?php 
+                        echo "Producto destacado #1 de la semana <strong>" . htmlspecialchars($producto['producto_mas_vendido'], ENT_QUOTES) . " a " . number_format($producto['precio_venta']) . " por " . htmlspecialchars($producto['unidad_medida'], ENT_QUOTES) . "</strong>"; 
+                        ?>
+                    </div>
+                    <div>
+                        <table>
+                            <br>
+                            <tr>
+                                <?php
+                                echo "<td>" . $producto['total_vendido'] . " Productos vendidos";"</td>";
+                                ?>
+                            </tr>
+                        </table>
+                    </div>
+                <?php
+                } else {
+                    echo '<div style="text-align: center;">No se encontraron productos.</div>';
+                }
+                ?>
+                <div class="ibox-content" style="text-align:center;">
+                    <br>
+                    <button class="btn btn-primary" style="background-color: #51CC20; color: black; font-size: 25px; font-family: Arial; margin: auto; display: block; border-radius: 10px;" onclick="window.location.href='compra.php'">
+                        <i class="fa fa fa-shopping-cart"></i> COMPRAR
+                    </button>
                                 </div>
                             </div>
-                            <br>
                             <hr>
-                            <div class="ibox-content" style="text-align:center;">
-                                <button class="btn btn-primary" style="background-color: #51CC20; color: black; font-size: 25px; font-family: Arial; margin: auto; display: block; border-radius: 10px;" onclick="window.location.href='compra.php'">
-                                    <i class="fa fa fa-shopping-cart"></i> COMPRAR
-                                </button>
+                            
                             </div>
                         </div>
                     </div>
@@ -213,7 +265,7 @@ include 'consulta.php';
     </div>
 
 <!--Pie de pagina-->
-    <footer style="position: fixed; top: 100; width: 100%; z-index: 0;">
+    <footer style="position: fixed; top: 200; width: 100%; z-index: 0;">
         <div class="sec1">
             <div class="part2">
                 <h3>Sobre Nosotros</h3>

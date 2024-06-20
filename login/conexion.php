@@ -1,5 +1,5 @@
 <?php
-$db = "appvicola6";
+$db = "appvicola";
 // Establecer conexión
 $conn = mysqli_connect("localhost", "root", "", $db);
 ?>

@@ -1,36 +1,11 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Appvicola</title>
-    <!--Para llamar los otros archivos ya se CSS o JS-->
-    <link rel="stylesheet" href="css/estiloland.css">
-    <link rel="shortcut icon" href="css/Imagenes/icono.png" type="image/x-icon">
-    <script src="https://kit.fontawesome.com/fbf50badbe.js" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/fbf50badbe.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<?php
+include 'login/head.php';
 
-    
-</head>
+?>
 <body>
-            <!--Para el menu de opciones-->
-    <header>
-        <div class="menu">
-         <a href="index.html"> <img  src="css/Imagenes/icono.png" alt=""> </a>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="Contacto.html">Contacto</a></li>
-                    <li><a href="quienessomos.html">Quienes Somos</a></li>
-                    <li><a href="Ubicacion.html">Ubicacion</a></li>
-                    <li><a href="registro.html">Registro</a></li>
-                    <li><a href="ingreso.html">Ingreso</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <?php
+  include 'login/header.php';
+  ?>
             <!-- Botón de WhatsApp -->
   <div class="whatsapp-button">
     <a href="https://wa.me/NUMERO_DE_TELEFONO" target="_blank">
@@ -39,7 +14,7 @@
   </div>
             <!--Boton de carrito-->
   <div class="comp-button">
-            <a href="catalogo.php"><i class="fas fa-shopping-cart"></i></a>
+            <a href="Catalogo/Catalogo2.php"><i class="fas fa-shopping-cart"></i></a>
   </div>
       <div class="container">
           <div class="slider-container">
@@ -89,5 +64,9 @@
     });
   </script>
 
+<?php
+include 'login/footer.php';
+
+?>
 </body>
 </html> 

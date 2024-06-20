@@ -140,5 +140,5 @@ include("../../controladores/proveedor/listaProveedor.php");
 
 <?php 
  include("../layout/footerDash.php"); 
- //include("../layout/mensajes.php");
+ include("../layout/mensajes.php");
 ?>

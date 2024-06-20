@@ -1,6 +1,6 @@
 <?php
-include '../Conexion/conexion.php';
-session_start();
+include '../Conexion/conexion2.php';
+include '../sesion/iniciar_sesion.php';
 
 // Inicializar el carrito si no está inicializado
 if (!isset($_SESSION['cart'])) {
@@ -72,9 +72,82 @@ if (count($carrito) > 0) {
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- VENTANA EMERGENTE DEL DETALLE DEL PRODUCTO -->
+    <script>
+        function openInvoiceForm() {
+    // Obtener los valores del formulario
+        var metodoPago = document.getElementById("metodo_pago").value;
+        var cliente = document.getElementById("valor_unitario").value;
+        var valorTotal = document.getElementById("valor_total").value;
+        var numeroOrden = document.getElementById("numero_orden").value;
+
+        // Calcular las dimensiones y posición para centrar la ventana emergente
+        var popupWidth = 550;
+        var popupHeight = 700;
+        var left = (window.screen.width - popupWidth) / 2;
+        var top = (window.screen.height - popupHeight) / 2;
+
+        // Abrir una ventana emergente con el formulario de factura
+        var invoiceWindow = window.open("", "Factura", "width=" + popupWidth + ",height=" + popupHeight + ",left=" + left + ",top=" + top);
+
+        // Construir el contenido del formulario de factura
+        var invoiceContent = "<html><head><style>";
+        invoiceContent += "button {";
+        invoiceContent += "color: black;";
+        invoiceContent += "font-weight: bold;";
+        invoiceContent += "border-radius: 5px;";
+        invoiceContent += "background: #f12711;";
+        invoiceContent += "background: -webkit-linear-gradient(to right, #f5af19, #f12711);";
+        invoiceContent += "background: linear-gradient(to right, #f5af19, #f12711);";
+        invoiceContent += "font-size: 16px;";
+        invoiceContent += "padding: 10px 20px;";
+        invoiceContent += "}";
+        invoiceContent += "</style></head><body>";
+        invoiceContent += "<div style='text-align: center;'>";
+        invoiceContent += "<img src='../css/Imagenes/icono.png' alt=''>"; // Aquí se agrega el enlace con la imagen
+        invoiceContent += "<h1 style='text-align: center; color: #F39C12;'>DETALLE DE COMPRA</h1>";
+        invoiceContent += "<p><strong>Cliente:</strong> " + cliente + "</p>";
+        invoiceContent += "<p><strong>Método de Pago:</strong> " + metodoPago + "</p>";
+        invoiceContent += "<div style='display: flex; justify-content: center;'>";
+        invoiceContent += "<table border='1' style='margin: 0 auto;'>";
+        invoiceContent += "<tr><th>PRODUCTO</th><th>CANTIDAD</th></tr>";
+        <?php foreach ($productos as $producto): ?>
+            invoiceContent += "<tr>";
+            invoiceContent += "<td style='text-align: center;'><?php echo $producto['nombre_producto']; ?></td>";
+            invoiceContent += "<td style='text-align: center;'><?php echo $producto['cantidad']; ?></td>";
+            invoiceContent += "</tr>";
+        <?php endforeach; ?>
+        invoiceContent += "</table>";
+        invoiceContent += "</div>";
+        invoiceContent += "<p><strong>Total:</strong> " + valorTotal + "</p>";
+        invoiceContent += "<p><strong>Número de Orden:</strong> " + numeroOrden + "</p>";
+        invoiceContent += "<button onclick='window.close()'>Finalizar</button>";
+        invoiceContent += "</div>";
+        invoiceContent += "</body></html>";
+
+        // Escribir el contenido en la ventana emergente
+        invoiceWindow.document.write(invoiceContent);
+        invoiceWindow.document.close();
+
+        // Agregar la clase de difuminado al fondo principal
+        document.getElementById('main-content').classList.add('blur-background');
+
+        // Eliminar la clase de difuminado cuando la ventana emergente se cierra
+        invoiceWindow.onbeforeunload = function() {
+            document.getElementById('main-content').classList.remove('blur-background');
+        };
+    }
+        let contador = 1;
+
+        // Incrementar el contador cada vez que la página se carga
+        window.onload = function() {
+            document.getElementById('numero_orden').value = contador;
+            contador++;
+        };
+    </script>
     <!-- Estilos locales -->
-    <link rel="stylesheet" href="css/estilocata.css">
-    <link rel="shortcut icon" href="css/Imagenes/icono.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/estilocata.css">
+    <link rel="shortcut icon" href="../css/Imagenes/icono.png" type="image/x-icon">
     <script src="https://kit.fontawesome.com/fbf50badbe.js" crossorigin="anonymous"></script>
     <!-- Estilos varios -->
     <style>
@@ -109,15 +182,15 @@ if (count($carrito) > 0) {
             margin: 0;
         }
         
-    .sty{
-        margin-left: 0px;
-        height: 50%;
-        width: 50%;
-        text-transform: uppercase;
-    }
+        .sty{
+            margin-left: 0px;
+            height: 50%;
+            width: 50%;
+            text-transform: uppercase;
+        }
 
-    /* Estilos personalizados*/
-    .fixed-right {
+        /* Estilos personalizados*/
+        .fixed-right {
             position: fixed;
             right: 0;
             top: 47%;
@@ -132,7 +205,7 @@ if (count($carrito) > 0) {
         }
         .order-form label {
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 30px;
         }
         .order-form select,
         .order-form input[type="text"] {
@@ -163,20 +236,26 @@ if (count($carrito) > 0) {
             margin-left: 24%;
             border-radius: 5px;
         }
+
+        /* Estilo de difuminado del fondo */
+        .blur-background {
+            filter: blur(3px);
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
     <header style="position: fixed; top: 0; width: 100%; z-index: 100;">
         <div class="menu">
-            <a href="index.html"><img src="css/Imagenes/icono.png" alt=""></a>
+            <a href="index.html"><img src="../css/Imagenes/icono.png" alt=""></a>
             <nav>
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="Contacto.html">Contacto</a></li>
-                    <li><a href="quienessomos.html">Quienes Somos</a></li>
-                    <li><a href="Ubicacion.html">Ubicacion</a></li>
-                    <li><a href="compra.php" class="comp-icon"><i class="fas fa-shopping-cart"></i></a></li>
-                    <li><a href="index.html" class="comp-icon"><i class="fa-solid fa-arrow-right-from-bracket" style="color: #f00a0a;"></i></a></li>
+                    <li><a href="../Landing/index.html">Inicio</a></li>
+                    <li><a href="../Landing/Contacto.html">Contacto</a></li>
+                    <li><a href="../Landing/quienessomos.html">Quienes Somos</a></li>
+                    <li><a href="../Landing/Ubicacion.html">Ubicacion</a></li>
+                    <li><a href="../Landing/compra.php" class="comp-icon"><i class="fas fa-shopping-cart"></i></a></li>
+                    <li><a href="../sesion/cerrar_sesion.php" class="comp-icon"><i class="fa-solid fa-arrow-right-from-bracket" style="color: #f00a0a;"></i></a></li>
                 </ul>
             </nav>
         </div>
@@ -184,11 +263,10 @@ if (count($carrito) > 0) {
     <br><br><br><br>
 
     <td>
-        <a href="Catalogo2.php" class="btn btn-warning" style="position: fixed; transform: translateY(570px); background-color: #90BAF3; color: black; font-weight: bold;">
-                    <i class="glyphicon glyphicon-menu-left"></i> Volver al catálogo
-       </a>
+        <a href="Catalogo2.php" class="btn btn-warning" style="position: fixed; transform: translateY(480px); background-color: #90BAF3; color: black; font-weight: bold;">
+                    <i class="glyphicon glyphicon-menu-left"></i> Volver al catálogo</a>
     </td>
-    <main>
+    <main id="main-content"> <!-- Agregar ID para aplicar difuminado -->
         <div class="sty">
             <div class="table-container" >
             <h2 style= "color: #F39C12; font-weight: bold; transform: translateX(200px)">Carrito de Compras</h2>
@@ -223,61 +301,101 @@ if (count($carrito) > 0) {
             
             <button onclick="clearCart()" class="Borrar_button">Borrar pedido</button>
             <script>
-        function clearCart() {
-            if (confirm('¿Estás seguro de que deseas borrar el pedido?')) {
-                // Crear un formulario para enviar la solicitud POST al servidor
-                var form = document.createElement('form');
-                form.method = 'POST';
-                form.action = 'compra.php';
+                function clearCart() {
+                    if (confirm('¿Estás seguro de que deseas borrar el pedido?')) {
+                        // Crear un formulario para enviar la solicitud POST al servidor
+                        var form = document.createElement('form');
+                        form.method = 'POST';
+                        form.action = 'compra.php';
 
-                // Agregar el campo oculto con el valor de la acción
-                var input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = 'action';
-                input.value = 'clearCart';
-                form.appendChild(input);
+                        // Agregar el campo oculto con el valor de la acción
+                        var input = document.createElement('input');
+                        input.type = 'hidden';
+                        input.name = 'action';
+                        input.value = 'clearCart';
+                        form.appendChild(input);
 
-                // Agregar el formulario al cuerpo y enviarlo
-                document.body.appendChild(form);
-                form.submit();
-            }
-        }
-    </script>
+                        // Agregar el formulario al cuerpo y enviarlo
+                        document.body.appendChild(form);
+                        form.submit();
+                    }
+                }
+            </script>
 
         </div>
     </div>
-    </main>
-    <div class="col-md-3" style="position: fixed; left: 82%;background-color: #f9f9f9;">
-    <div class="fixed-right">
-        <div class="order-form">
-            <div class="order-header">
-                <h3 class="rounded-box" style="transform: translateX(30%)">ORDEN DE PAGO</h3>
+    <?php
+// Conexión a la base de datos (debes tener tu propia configuración de conexión)
+$conexion = new mysqli('localhost', 'root', '', 'appvicola');
+
+// Verificar conexión
+if ($conexion->connect_error) {
+    die("Error de conexión: " . $conexion->connect_error);
+}
+
+// Query para obtener métodos de pago
+$query = "SELECT id_metodo, tipo_pago FROM metodo_pago";
+$result = $conexion->query($query);
+
+// Verificar si se obtuvieron resultados
+if ($result->num_rows > 0) {
+    // Construir opciones para la lista desplegable
+    $options = '';
+    while ($row = $result->fetch_assoc()) {
+        $options .= '<option value="' . $row['id_metodo'] . '">' . $row['tipo_pago'] . '</option>';
+    }
+} else {
+    $options = '<option value="">No hay métodos de pago disponibles</option>';
+}
+
+// Cerrar conexión
+$conexion->close();
+?>
+
+    <form id="orden-pago-form" action="insertCompra.php" method="post">
+        <div class="col-md-3" style="position: fixed; left: 85%;background-color: #f9f9f9;">
+            <div class="fixed-right">
+                <div class="order-form">
+                    <div class="order-header">
+                        <br>
+                        <h3 class="rounded-box" style="transform: translateX(30%)">ORDEN DE PAGO</h3>
+                        <br>
+                    </div>
+                    <label for="valor_unitario" style="font-size: 18px; margin-bottom: 5px;">Cliente:</label>
+                    <input type="hidden" name="id_usuario" value="<?php echo $_SESSION["id_usuario"]?>">
+                    <input type="text" name="valor_unitario" id="valor_unitario" value="<?php echo $_SESSION["nombre"] . " " . $_SESSION["apellido"]; ?>" readonly>
+                    <br><br>
+                    <label for="metodo_pago" style="font-size: 18px; margin-bottom: 5px;">Método de Pago:</label>
+                    <select name="metodo_pago" id="metodo_pago">
+                        <option value="1">Nequi</option>
+                        <option value="2">Daviplata</option>
+                        <option value="3">Transfiya</option>
+                        <option value="4">PayPal</option>
+                        <option value="5">Tarjeta de Crédito</option>
+                        <option value="6">Transferencia Bancaria</option>
+                    </select>
+                    <br><br>
+                    <label for="valor_total" style="font-size: 18px; margin-bottom: 5px;">Valor Total:</label>
+                    <input type="text" name="valor_total" id="valor_total" value="<?php echo $total; ?>">
+                    <br><br>
+                    <!-- Información de los productos -->
+                <?php foreach ($productos as $index => $producto): ?>
+                    <input type="hidden" name="productos[<?php echo $index; ?>][n_producto]" value="<?php echo $producto['n_producto']; ?>">
+                    <input type="hidden" name="productos[<?php echo $index; ?>][nombre_producto]" value="<?php echo $producto['nombre_producto']; ?>">
+                    <input type="hidden" name="productos[<?php echo $index; ?>][cantidad]" value="<?php echo $producto['cantidad']; ?>">
+                    <input type="hidden" name="productos[<?php echo $index; ?>][precio_unitario]" value="<?php echo $producto['precio_venta']; ?>">
+                    <input type="hidden" name="productos[<?php echo $index; ?>][subtotal]" value="<?php echo $producto['subtotal']; ?>">
+                <?php endforeach; ?>
+                    <!-- onclick="openInvoiceForm()" -->
+                    <button type="submit" class="btn btn-primary custom-button" style="font-size: 23px">REALIZAR PAGO</button>
+                    <br><br>
+                </div>
             </div>
-                <label for="valor_unitario">Cliente:</label>
-                <input type="text" name="valor_unitario" id="valor_unitario">
-                <label for="metodo_pago">Método de Pago:</label>
-                <select name="metodo_pago" id="metodo_pago">
-                    <option value="transferencia">Nequi</option>
-                    <option value="transferencia">Daviplata</option>
-                    <option value="transferencia">Transfiya</option>
-                    <option value="paypal">PayPal</option>
-                    <option value="tarjeta">Tarjeta de Crédito</option>
-                    <option value="transferencia">Transferencia Bancaria</option>
-                </select>
-                <label for="valor_impuesto">Valor con Impuesto:</label>
-                <input type="text" name="valor_impuesto" id="valor_impuesto">
-                <label for="valor_total">Valor Total:</label>
-                <input type="text" name="valor_total" id="valor_total" value="<?php echo '$ ' . number_format($total) . ' COP'; ?>" readonly>
-                <label for="numero_orden">Número de Orden:</label>
-                <input type="text" name="numero_orden" id="numero_orden">
-                <br></br><br><br>
-                <button type="submit" class="btn btn-primary custom-button" style="font-size: 20px">REALIZAR PAGO</button>
-                <br><br>
-            </form>
         </div>
-    </div>
-    </div>
-    </div>
+    </form>
+    </main>
+
+
     <footer>
         <div class="sec1">
             <div class="part2">

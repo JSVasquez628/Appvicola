@@ -15,17 +15,17 @@ if (!empty($_POST["ingresar"])) {
             $_SESSION["apellido"] = $datos->apellidos;
             $_SESSION["id_rol"] = $datos->id_rol;
             if ($datos->id_rol == 2) {
-                header("location: ../../Catalogo/Catalogo2.php");
+                header("location: ../Catalogo/Catalogo2.php");
                 exit();
             } elseif ($datos->id_rol == 1) {
-                header("location: ../../Dashboard/layout/indexDash.php");
+                header("location: ../Dashboard/graficos/grafico.php");
                 exit();
             }
         } else {
             $message = "Acceso denegado.";
             echo "<script language='JavaScript'>
             alert('$message');
-            location.assign('../vistas/ingreso.php');
+            location.assign('ingreso.php');
             </script>";        }
     } else {
         echo "Campos vacíos"; 

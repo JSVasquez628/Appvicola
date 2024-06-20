@@ -67,9 +67,9 @@ include("../../controladores/usuarios/listar_usuarios.php");
                                 <td><center><?php echo $usuarios['rol'] ?></center></td>
                                 <td>
                                     <div class="btn-group">
-                                        <a href="showUser.php?id=<?php echo $id_usuario; ?>" type="button" class="btn btn-info"><i class="fa fa-eye"></i>Ver</a>
-                                        <a href="updateUser.php?id=<?php echo $id_usuario; ?>" type="button" class="btn btn-success"><i class="fa fa-pencil-alt"></i>Editar</a>
-                                        <a href="deleteUser.php?id=<?php echo $id_usuario; ?>" type="button" class="btn btn-danger"><i class="fa fa-trash"></i>Eliminar</a>
+                                        <a href="showUser.php?id=<?php echo $id_usuario; ?>" type="button" class="btn btn-info"><i class="fa fa-eye"></i>  Ver </a>  
+                                        <a href="updateUser.php?id=<?php echo $id_usuario; ?>" type="button" class="btn btn-success"><i class="fa fa-pencil-alt"></i>  Editar</a>
+                                        <a href="deleteUser.php?id=<?php echo $id_usuario; ?>" type="button" class="btn btn-danger"><i class="fa fa-trash"></i>  Eliminar</a>
                                     </div>
                                 </td>
                             </tr>
