@@ -250,11 +250,11 @@ if (count($carrito) > 0) {
             <a href="index.html"><img src="../css/Imagenes/icono.png" alt=""></a>
             <nav>
                 <ul>
-                    <li><a href="../Landing/index.html">Inicio</a></li>
-                    <li><a href="../Landing/Contacto.html">Contacto</a></li>
-                    <li><a href="../Landing/quienessomos.html">Quienes Somos</a></li>
-                    <li><a href="../Landing/Ubicacion.html">Ubicacion</a></li>
-                    <li><a href="../Landing/compra.php" class="comp-icon"><i class="fas fa-shopping-cart"></i></a></li>
+                    <li><a href="../login/index.html">Inicio</a></li>
+                    <li><a href="../login/Contacto.html">Contacto</a></li>
+                    <li><a href="../login/quienessomos.html">Quienes Somos</a></li>
+                    <li><a href="../login/Ubicacion.html">Ubicacion</a></li>
+                    <li><a href="../login/compra.php" class="comp-icon"><i class="fas fa-shopping-cart"></i></a></li>
                     <li><a href="../sesion/cerrar_sesion.php" class="comp-icon"><i class="fa-solid fa-arrow-right-from-bracket" style="color: #f00a0a;"></i></a></li>
                 </ul>
             </nav>

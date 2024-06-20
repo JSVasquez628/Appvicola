@@ -52,11 +52,11 @@ include '../sesion/iniciar_sesion.php';
            <a href="index.html"><img src="../css/Imagenes/icono.png" alt=""></a>
             <nav>
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="Contacto.html">Contacto</a></li>
-                    <li><a href="quienessomos.html">Quienes Somos</a></li>
-                    <li><a href="Ubicacion.html">Ubicacion</a></li>
-                    <li><a href="Carrito.php" class="comp-icon"><i class="fas fa-shopping-cart"></i></a></li>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="../login/Contacto.php">Contacto</a></li>
+                    <li><a href="../login/quienessomos.html">Quienes Somos</a></li>
+                    <li><a href="../login/Ubicacion.html">Ubicacion</a></li>
+                    <li><a href="../login/Carrito.php" class="comp-icon"><i class="fas fa-shopping-cart"></i></a></li>
                     <li><a href="../sesion/cerrar_sesion.php" class="comp-icon"><i class="fa-solid fa-arrow-right-from-bracket" style="color: #f00a0a;"></i></a></li>
                 </ul>
             </nav>
