@@ -16,7 +16,7 @@
     <!-- ubicacion -->
     <link rel="stylesheet" href="../css/estiloubicacion.css">
     <!-- index -->
-    <link rel="stylesheet" href="../css/estiloland.css">
+    <!-- <link rel="stylesheet" href="../css/estiloland.css"> -->
 
 
     <style>
@@ -43,7 +43,6 @@
             margin-bottom: 20px;
             /* Margen inferior */
         }
-
         .img_logo {
             width: 120px;
             height: 70px;
@@ -75,6 +74,9 @@
             /* Bordes redondeados */
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
             /* Sombra del texto */
+        }
+        .link-size{
+          font-size: 1.5rem;
         }
     </style>
 

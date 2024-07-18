@@ -37,7 +37,7 @@ try {
     $mail->addAddress($email, ',');
     $mail->isHTML(true);
     $mail->Subject = 'Recuperación de contraseña';
-    $mail->Body = 'Hola, este es un correo generado para solicitar tu recuperación de contraseña. Por favor, visita la página de <a href="http://localhost:3000/login/vistas/cambia_contraseña.php?id='.$row['id_usuario'].'">Recuperación de contraseña</a>';
+    $mail->Body = 'Hola, este es un correo generado para solicitar tu recuperación de contraseña. Por favor, visita la página de <a href="http://localhost:3000/login/cambia_contraseña.php?id='.$row['id_usuario'].'">Recuperación de contraseña</a>';
 
 
     $mail->send();

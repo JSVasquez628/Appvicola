@@ -188,7 +188,7 @@ include '../sesion/iniciar_sesion.php';
                                         <?php
                     // Conexión a la base de datos
                     try {
-                        $pdo = new PDO('mysql:host=localhost;dbname=appvicola6', 'root', '');
+                        $pdo = new PDO('mysql:host=localhost;dbname=appvicola', 'root', '');
                         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     } catch (PDOException $e) {
                         die("Error en la conexión: " . $e->getMessage());

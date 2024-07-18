@@ -149,6 +149,8 @@ if (count($carrito) > 0) {
     <link rel="stylesheet" href="../css/estilocata.css">
     <link rel="shortcut icon" href="../css/Imagenes/icono.png" type="image/x-icon">
     <script src="https://kit.fontawesome.com/fbf50badbe.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Estilos varios -->
     <style>
         footer {
@@ -367,12 +369,12 @@ $conexion->close();
                     <br><br>
                     <label for="metodo_pago" style="font-size: 18px; margin-bottom: 5px;">Método de Pago:</label>
                     <select name="metodo_pago" id="metodo_pago">
-                        <option value="1">Nequi</option>
+                        <option value="2">Nequi</option>
                         <option value="2">Daviplata</option>
-                        <option value="3">Transfiya</option>
-                        <option value="4">PayPal</option>
-                        <option value="5">Tarjeta de Crédito</option>
-                        <option value="6">Transferencia Bancaria</option>
+                        <option value="2">Transfiya</option>
+                        <option value="2">PayPal</option>
+                        <option value="3">Tarjeta de Crédito</option>
+                        <option value="1">Efevtivo/option>
                     </select>
                     <br><br>
                     <label for="valor_total" style="font-size: 18px; margin-bottom: 5px;">Valor Total:</label>
@@ -387,7 +389,7 @@ $conexion->close();
                     <input type="hidden" name="productos[<?php echo $index; ?>][subtotal]" value="<?php echo $producto['subtotal']; ?>">
                 <?php endforeach; ?>
                     <!-- onclick="openInvoiceForm()" -->
-                    <button type="submit" class="btn btn-primary custom-button" style="font-size: 23px">REALIZAR PAGO</button>
+                    <button type="submit" class="btn btn-primary custom-button" style="font-size: 23px">Finalizar compra</button>
                     <br><br>
                 </div>
             </div>
@@ -412,7 +414,8 @@ $conexion->close();
             </div>
         </div>
         <hr>
-        <p>&copy; 2023 Avícola. Todos los derechos reservados.</p>
+        <p>&copy; 2023 Appvicola. Todos los derechos reservados.</p>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </footer>
 </body>
 </html>

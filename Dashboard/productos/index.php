@@ -40,7 +40,6 @@ include("../../controladores/productos/listaProductos.php");
                         <th>Nro</th>
                         <th>Nombre</th>
                         <th>Precio venta</th>
-                        <th>Precio de venta</th>
                         <th>Precio de compra</th>
                         <th>Unidad de medida</th>
                         <th>Imagen</th>
@@ -59,7 +58,6 @@ include("../../controladores/productos/listaProductos.php");
                                 <td><?php echo $producto_dato['n_producto'] ?></td>
                                 <td><?php echo $producto_dato['nombre_producto'] ?></td>
                                 <td><?php echo $producto_dato['precio_venta'] ?></td>
-                                <td><?php echo $producto_dato['precio_compra'] ?></td>
                                 <td><?php echo $producto_dato['precio_compra'] ?></td>
                                 <td><?php echo $producto_dato['unidad_medida'] ?></td>
                                 <td><?php echo "<img src='data:image/jpg;base64," . base64_encode($producto_dato['imagen']) . "' alt='80' width='80'>"?></td>
@@ -95,54 +93,48 @@ include("../../controladores/productos/listaProductos.php");
 
   <?php include("../layout/footerDash.php"); ?>
   <script>
-  $(function () {
+$(document).ready(function() {
     $("#example1").DataTable({
-        "pageLength": 5, 
-          language: {
-              "emptyTable": "No hay información",
-              "decimal": "",
-              "info": "Mostrando _START_ a _END_ de _TOTAL_ Usuarios",
-              "infoEmpty": "Mostrando 0 a 0 de 0 Usuarios",
-              "infoFiltered": "(Filtrado de _MAX_ total Usuarios)",
-              "infoPostFix": "",
-              "thousands": ",",
-              "lengthMenu": "Mostrar _MENU_ Usuarios",
-              "loadingRecords": "Cargando...",
-              "processing": "Procesando...",
-              "search": "Buscador:",
-              "zeroRecords": "Sin resultados encontrados",
-              "paginate": {
-                  "first": "Primero",
-                  "last": "Ultimo",
-                  "next": "Siguiente",
-                  "previous": "Anterior"
-              }
-             },
-      "responsive": true, "lengthChange": true, "autoWidth": false,
-      buttons: [{
-                        extend: 'collection',
-                        text: 'Reportes',
-                        orientation: 'landscape',
-                        buttons: [{
-                            text: 'Copiar',
-                            extend: 'copy'
-                        }, {
-                            extend: 'pdf',
-                        }, {
-                            extend: 'csv',
-                        }, {
-                            extend: 'excel',
-                        }, {
-                            text: 'Imprimir',
-                            extend: 'print'
-                        }
-                        ]
-                    },
-                        {
-                            extend: 'colvis',
-                            text: 'Visualizar columnas'
-                        }
-                    ],
+        "pageLength": 5,
+        language: {
+            "emptyTable": "No hay información",
+            "decimal": "",
+            "info": "Mostrando _START_ a _END_ de _TOTAL_ Usuarios",
+            "infoEmpty": "Mostrando 0 a 0 de 0 Usuarios",
+            "infoFiltered": "(Filtrado de _MAX_ total Usuarios)",
+            "infoPostFix": "",
+            "thousands": ",",
+            "lengthMenu": "Mostrar _MENU_ Usuarios",
+            "loadingRecords": "Cargando...",
+            "processing": "Procesando...",
+            "search": "Buscador:",
+            "zeroRecords": "Sin resultados encontrados",
+            "paginate": {
+                "first": "Primero",
+                "last": "Ultimo",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            }
+        },
+        "responsive": true,
+        "lengthChange": true,
+        "autoWidth": false,
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'collection',
+                text: 'Reportes',
+                orientation: 'landscape',
+                buttons: [
+                    { extend: 'copy', text: 'Copiar' },
+                    { extend: 'pdf', text: 'PDF' },
+                    { extend: 'csv', text: 'CSV' },
+                    { extend: 'excel', text: 'Excel' },
+                    { extend: 'print', text: 'Imprimir' }
+                ]
+            },
+            { extend: 'colvis', text: 'Visualizar columnas' }
+        ]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-  });
+});
 </script>

@@ -37,18 +37,17 @@
         </li>
         
       </ul>
-      <!-- Left links -->
-
+    
       <div class="d-flex align-items-center">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li><a class="nav-link" href="Contacto.php">Contacto</a></li>
-            <li><a class="nav-link" href="quienessomos.php">Quienes Somos</a></li>
-            <li><a class="nav-link" href="Ubicacion.php">Ubicacion</a></li>
+            <li><a class="nav-link link-size" href="Contacto.php">Contacto</a></li>
+            <li><a class="nav-link link-size" href="quienessomos.php">Quienes Somos</a></li>
+            <li><a class="nav-link link-size" href="Ubicacion.php">Ubicacion</a></li>
         </ul>
-        <button data-mdb-ripple-init type="button" class="btn btn-light px-3 me-2" onclick="window.location.href='ingreso.php';">
+        <button data-mdb-ripple-init type="button" class="link-size btn btn-light px-3 me-2" onclick="window.location.href='ingreso.php';">
           Ingresar
         </button>
-        <button data-mdb-ripple-init type="button" class="btn btn-dark me-3" onclick="window.location.href='registro_u.php';">
+        <button data-mdb-ripple-init type="button" class="link-size btn btn-dark me-3" onclick="window.location.href='registro_u.php';">
           Registrar
         </button>
         
